@@ -18,7 +18,7 @@ url2= sys.argv[2]
 def compute_simhash_from_url(url):
 
     
-    response = requests.get(url)  #Sends an HTTP GET request to the server, Gets HTML content , Wraps everything inside a response object
+    response = requests.get(url)  #Sends an HTTP GET request to the server, Gets HTML content 
     if response.status_code !=200:
         print("failed to fetch the page")
         sys.exit(1)
@@ -61,7 +61,6 @@ def compute_simhash(frequency):
             else :
                 lst[i]-=count
 
-    #build final hash
     simhash =0
     for i in range(64):
         if lst[i]>0:
