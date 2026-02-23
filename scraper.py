@@ -16,7 +16,7 @@ print("url entered", url)
 
 
 # fetch the page
-response = requests.get(url)  #Sends an HTTP GET request to the server, Gets HTML content , Wraps everything inside a response object
+response = requests.get(url)  #Sends an HTTP GET request to the server, Gets HTML content 
 
 
 if response.status_code !=200:
@@ -32,17 +32,15 @@ soup = BeautifulSoup(html_content,"html.parser")
 
 # extract page title
 title = soup.title.string if soup.title else "No title"
-print("Page Title:")
-# print(title)
-print()
+print(title)
+
 
 
 
 #extract page body text
-print("Page body:")
+
 body = soup.body.get_text() if soup.body else "No body found"
-# print(body)
-print()
+print(body)
 
 
 
@@ -62,8 +60,7 @@ text = body.lower()
 wordList = re.findall(r'\b[a-z0-9]+\b', text)
 
 frequency = Counter(wordList)
-
-# print(frequency)
+print(frequency)
 
 
 
@@ -94,7 +91,6 @@ def compute_simhash(frequency):
             else :
                 list[i]-=count
 
-    #build final hash
     simhash =0
     for i in range(64):
         if list[i]>0:
@@ -104,8 +100,5 @@ def compute_simhash(frequency):
 
 simhash_value = compute_simhash(frequency)
 
-print("\nSimHash (64-bit):")
 print(simhash_value)
-print("Binary:")
-print(bin(simhash_value))
 
